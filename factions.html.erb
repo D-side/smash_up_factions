@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Factions</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+      img {
+          object-fit: contain;
+          height: 200px;
+          width: 200px;
+          margin: auto;
+      }
+      .card {
+        vertical-align: middle;
+        height: 440px;
+        display: inline-block;
+        page-break-inside: avoid;
+        padding: 10px;
+        text-align: center;
+        border-width: 2px;
+        border-radius: 0;
+      }
+      p {
+        text-align: justify;
+        font-size: 0.8em;
+      }
+      h3 {
+        page-break-before: always;
+      }
+    </style>
+  </head>
+  <body>
+    <% data.each do |name:, icon_data_url:, description:, set:| %><div class="card" style="width: 18rem;"><img src="<%= icon_data_url %>" class="card-img-top"><div class="card-body"><h5 class="card-title"><%= name %></h5><h6 class="card-subtitle mb-2 text-muted"><%= set %></h6><p class="card-text"><%= description %></p></div></div><% end %>
+  </body>
+</html>

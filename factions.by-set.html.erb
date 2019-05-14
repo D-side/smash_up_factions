@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Factions by set</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+      body {
+        columns: 3;
+        column-rule: 1px dashed black;
+      }
+      img {
+          object-fit: contain;
+          height: 64px;
+          width: 64px;
+          margin: auto;
+      }
+      .card {
+        vertical-align: middle;
+        height: 440px;
+        display: inline-block;
+        page-break-inside: avoid;
+        padding: 10px;
+        text-align: center;
+        border-width: 2px;
+        border-radius: 0;
+      }
+      p {
+        text-align: justify;
+      }
+      .set-title {
+        page-break-before: always;
+        font-style: italic;
+      }
+      .media {
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <% data.group_by { |f| f[:set] }.each do |set, factions| %>
+      <h5 class="set-title"><%= set %></h5>
+      <% factions.each do |name:, icon_data_url:, description:, set:| %>
+        <div class="media">
+          <img src="<%= icon_data_url %>" class="mr-3">
+          <div class="media-body">
+            <h6 class="mt-0 faction-title"><%= name %></h6>
+            <p class="card-text"><%= description %></p>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </body>
+</html>
